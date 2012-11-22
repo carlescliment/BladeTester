@@ -1,6 +1,15 @@
 BladeTesterBundle
 =================
 
+
+## Description
+
+This bundle allows you to stub easily objects with chained methods, for example in repositories like:
+
+```
+    $em->getConnection()->executeQuery()->fetchAll();
+```
+
 ## Installation
 
 ### Add the following lines to your  `deps` file and then run `php bin/vendors install`:
@@ -20,7 +29,7 @@ BladeTesterBundle
     {
         return array(
             // ...
-            new BladeTester\ChainedStubsBundle();
+            new BladeTester\ChainedStubsBundle\BladeTesterChainedStubsBundle();
             // ...
         );
     }
@@ -34,3 +43,40 @@ BladeTesterBundle
         // your other namespaces
     ));
 ```
+
+## Usage
+
+```
+    <?php
+
+    namespace My\SampleBundle\Tests;
+
+    use BladeTester\ChainedStubsBundle\Model\StubChainer;
+
+    class SampleTest extends \PHPUnit_Framework_TestCase {
+
+        private $stubChainer;
+        private $objectManager;
+
+        public function setUp() {
+            $this->stubChainer = new StubChainer($this);
+            $this->objectManager = $this->getMock('Doctrine\Common\Persistence\ObjectManager');
+        }
+
+
+        public function testICanChainStubCalls() {
+            // Arrange
+            $expectedResult = array('item1', 'item2');
+            $this->stubChainer->chain($this->objectManager, array('getConnection', 'executeQuery', 'fetchAll'), $expectedResult);
+            $sut = new ClassThatUsesManager($this->objectManager);
+
+            // Act
+            $result = $sut->getResults();
+            
+            // Assert
+            $this->assertEquals($expectedResult, $result);
+        }
+
+    }
+
+````
