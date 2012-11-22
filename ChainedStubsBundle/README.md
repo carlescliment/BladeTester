@@ -7,8 +7,8 @@ BladeTesterBundle
 
 ```
 [BladeTesterBundle]
-    git=https://github.com/carlescliment/BladeTesterBundle
-    target=bundles/BladeTesterBundle
+    git=https://github.com/carlescliment/BladeTester
+    target=bundles/BladeTester
 ```
 
 
@@ -20,8 +20,17 @@ BladeTesterBundle
     {
         return array(
             // ...
-            new BladeTesterBundle(),
+            new BladeTester\ChainedStubsBundle();
             // ...
         );
     }
+```
+
+### Register the BladeTesterBundle namespace
+```
+    // app/autoload.php
+    $loader->registerNamespaces(array(
+        'BladeTester'            => __DIR__.'/../vendor/bundles',
+        // your other namespaces
+    ));
 ```
