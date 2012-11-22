@@ -71,7 +71,9 @@ This bundle allows you to stub easily objects with chained methods, for example 
             $sut = new ClassThatUsesManager($this->objectManager);
 
             // Act
-            $result = $sut->getResults();
+            $result = $sut->getResults(); // Imagine that the SUT performs the call
+                                          // $om->getConnection()->executeQuery()->fetchAll()
+                                          // and returns the value
             
             // Assert
             $this->assertEquals($expectedResult, $result);
