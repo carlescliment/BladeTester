@@ -72,7 +72,7 @@ This bundle allows you to stub easily objects with chained methods, for example 
 
             // Act
             $result = $sut->getResults(); // Imagine that the SUT performs the call
-                                          // $om->getConnection()->executeQuery()->fetchAll()
+                                          // $om->getConnection()->executeQuery('Some query here')->fetchAll()
                                           // and returns the value
             
             // Assert
