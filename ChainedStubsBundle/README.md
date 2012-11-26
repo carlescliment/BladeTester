@@ -12,7 +12,9 @@ This bundle allows you to stub easily objects with chained methods, for example 
 
 ## Installation
 
-### Add the following lines to your  `deps` file and then run `php bin/vendors install`:
+### Step 1: Install bundle
+
+### Symfony 2.0.x: Add the following lines to your  `deps` file and then run `php bin/vendors install`:
 
 ```
 [BladeTesterBundle]
@@ -20,7 +22,27 @@ This bundle allows you to stub easily objects with chained methods, for example 
     target=bundles/BladeTester
 ```
 
+### Register the BladeTesterBundle namespace
+```
+    // app/autoload.php
+    $loader->registerNamespaces(array(
+        'BladeTester'            => __DIR__.'/../vendor/bundles',
+        // your other namespaces
+    ));
+```
 
+
+### Symfony 2.1.x: Add the following lines to your  `composer.json` file and then run `composer update`:
+
+```
+    "require": {
+		...
+        "carlescliment/chained-stubs-bundle": "*"
+        ...
+    },
+```
+
+### Step 2: Enable the bundle
 
 ### Add BladeTesterBundle to your application kernel
 ```
@@ -35,14 +57,6 @@ This bundle allows you to stub easily objects with chained methods, for example 
     }
 ```
 
-### Register the BladeTesterBundle namespace
-```
-    // app/autoload.php
-    $loader->registerNamespaces(array(
-        'BladeTester'            => __DIR__.'/../vendor/bundles',
-        // your other namespaces
-    ));
-```
 
 ## Usage
 
