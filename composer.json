@@ -2,10 +2,16 @@
     "name": "carlescliment/chained-stubs-bundle",
     "type": "symfony-bundle",
     "description": "Stub chained methods",
-    "keywords": [""],
-    "homepage": "https://github.com/vicentgodella/BladeTester",
+    "keywords": ["php", "mocks", "stubs", "testing", "phpunit"],
+    "homepage": "https://github.com/carlescliment/BladeTester",
     "license": "MIT",
     "authors": [
+	{
+            "name": "Carles Climent Granell",
+            "email": "carlescliment@gmail.com",
+            "homepage": "http://www.carlescliment.com",
+            "role": "Developer"
+        }
     ],
     "require": {
         "php": ">=5.3.0"
